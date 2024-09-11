@@ -1,10 +1,17 @@
 import React from 'react'
 import '../style/button.css'
+import {useNavigate} from 'react-router-dom'
 
-function Button() {
+function Button({formdata}) {
+  const navigate=useNavigate();
+
+  const handleClick=()=>{
+    navigate('/display',{state:formdata})
+  }
+
   return (
     <div>
-        <button className='submitbtn'>Submit</button>
+        <button onClick={handleClick} className='submitbtn'>Submit</button>
     </div>
   )
 }

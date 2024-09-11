@@ -1,17 +1,18 @@
 import './App.css'
-import Personal from './components/Personal'
-import Education from './components/Education'
-import Exp from './components/Exp'
-import Button from './components/Button'
+import FormContainer from './components/FormContainer'
+import Display from './components/Display'
+import { BrowserRouter as Router,Routes,Route } from 'react-router-dom' 
 
 function App() {
 
   return (
     <div className='main-container'>
-      <Personal />
-      <Education />
-      <Exp />
-      <Button />
+      <Router>
+        <Routes>
+          <Route path="/" element={<FormContainer />} />
+          <Route path="/display" element={<Display />} />
+        </Routes>
+      </Router>
     </div>
   )
 }

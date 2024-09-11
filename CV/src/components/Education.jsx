@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import Expandedu from './Expandedu'
 
-function Education() {
+function Education({onformdata}) {
   const [isExpand,setIsExpand]=useState(false)
     const handleExpand=()=>{
         setIsExpand(true)
@@ -19,7 +19,7 @@ function Education() {
             </div>
         </div>
         <div>
-          {isExpand&&<Expandedu />}
+          {isExpand&&<Expandedu onformdata={onformdata} />}
         </div>
     </div>
   )

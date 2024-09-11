@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import '../style/exp.css'
 
-export default function Expandexp() {
+export default function Expandexp({onformdata}) {
   const { register, handleSubmit,watch,setValue, formState: { errors } } = useForm();
   const isCurrentlyWorking=watch('currentlyWorking')
-  const [formdata,setFormdata]=useState({})
+  const [localdata,setlocaldata]=useState({})
+     
   const onSubmit = data => {
     console.log(data);
-    setFormdata(data);
+    setlocaldata(data);
+    onformdata(data);
   }
+
   const onedit=()=>{
-    Object.keys(formdata).forEach(key=>setValue(key,formdata[key]))
+    if (Object.keys(localdata).length > 0){
+      Object.keys(localdata).forEach(key=>setValue(key,localdata[key]))
+    }else{
+      console.log('There is no data');
+      
+    }
   }
   console.log(errors);
   

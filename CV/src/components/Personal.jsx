@@ -2,8 +2,11 @@ import React,{useState} from 'react'
 import '../style/personal.css'
 import Expandpersonal from './Expandpersonal'
 
-function Personal() {
+
+function Personal({onformdata}) {
     const [isExpand,setIsExpand]=useState(false)
+    
+
     const handleExpand=()=>{
         setIsExpand(true)
     }
@@ -21,7 +24,7 @@ function Personal() {
             </div>
         </div>
         <div>
-        {isExpand&&<Expandpersonal />}
+        {isExpand&&<Expandpersonal onformdata={onformdata} />}
         </div>
     </div>
   )

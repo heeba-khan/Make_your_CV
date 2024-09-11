@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import Expandexp from './Expandexp'
 
-function Exp() {
+function Exp({onformdata}) {
   const [isExpand,setIsExpand]=useState(false)
     const handleExpand=()=>{
         setIsExpand(true)
@@ -19,7 +19,7 @@ function Exp() {
             </div>
         </div>
         <div>
-          {isExpand&&<Expandexp />}
+          {isExpand&&<Expandexp onformdata={onformdata} />}
         </div>
     </div>
   )

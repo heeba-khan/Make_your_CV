@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import "../style/personal.css"
 
-export default function Expandpersonal() {
+export default function Expandpersonal({onformdata}) {
   const { register, handleSubmit,setValue, formState: { errors } } = useForm();
-  const [formdata,setFormdata]=useState({})
+  const [localdata,setlocaldata]=useState({})
+  
   const onSubmit = data => {
-    console.log(data);
-    setFormdata(data);
+    console.log(data);  
+    setlocaldata(data);
+    onformdata(data)
   }
+
   const onedit=()=>{
-    if (Object.keys(formdata).length > 0){
-      Object.keys(formdata).forEach(key=>setValue(key,formdata[key]))
+    if (Object.keys(localdata).length > 0){
+      Object.keys(localdata).forEach(key=>setValue(key,localdata[key]))
     }else{
       console.log('There is no data');
       
