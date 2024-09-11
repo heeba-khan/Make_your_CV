@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import "../style/personal.css"
 
 export default function Expandpersonal() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
+  const { register, handleSubmit,setValue, formState: { errors } } = useForm();
+  const [formdata,setFormdata]=useState({})
+  const onSubmit = data => {
+    console.log(data);
+    setFormdata(data);
+  }
+  const onedit=()=>{
+    if (Object.keys(formdata).length > 0){
+      Object.keys(formdata).forEach(key=>setValue(key,formdata[key]))
+    }else{
+      console.log('There is no data');
+      
+    }
+  }
   console.log(errors);
   
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <div className='personal-container'>
+    <form className='personalform' onSubmit={handleSubmit(onSubmit)}>
       <select {...register("Title", { required: true })}>
         <option value="Mr">Mr</option>
         <option value="Mrs">Mrs</option>
@@ -19,6 +33,8 @@ export default function Expandpersonal() {
       <input type="tel" placeholder="Mobile number" {...register("Mobile number", {required: true, minLength: 6, maxLength: 12})} />
 
       <input type="submit" />
+      <button type='button' onClick={onedit}>Edit</button>
     </form>
+    </div>
   );
 }

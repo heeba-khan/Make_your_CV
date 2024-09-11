@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import '../style/exp.css'
 
 export default function Expandexp() {
-  const { register, handleSubmit,watch, formState: { errors } } = useForm();
+  const { register, handleSubmit,watch,setValue, formState: { errors } } = useForm();
   const isCurrentlyWorking=watch('currentlyWorking')
-  const onSubmit = data => console.log(data);
+  const [formdata,setFormdata]=useState({})
+  const onSubmit = data => {
+    console.log(data);
+    setFormdata(data);
+  }
+  const onedit=()=>{
+    Object.keys(formdata).forEach(key=>setValue(key,formdata[key]))
+  }
   console.log(errors);
   
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <div className='personal-container'>
+    <form className='expform' onSubmit={handleSubmit(onSubmit)}>
       <input type="text" placeholder="Company name" {...register("Company name", {required: true, maxLength: 80})} />
       <input type="text" placeholder="Position" {...register("Position", {required: true, maxLength: 100})} />
       <textarea type="text" placeholder='Job Description' />
@@ -26,6 +35,8 @@ export default function Expandexp() {
       </div>
 
       <input type="submit" />
+     <button type='button' onClick={onedit}>Edit</button>
     </form>
+    </div>
   );
 }

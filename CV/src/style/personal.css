@@ -20,3 +20,15 @@
     border: none;
 }
 
+.personal-container{
+    border: 2px solid gainsboro;
+    border-radius: 8px;
+}
+
+.personalform{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    align-items: center;
+    padding: 10px;
+}
